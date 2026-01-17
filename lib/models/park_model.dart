@@ -1,0 +1,247 @@
+import 'package:flutter/material.dart';
+
+enum ParkType {
+  nationalPark, wildlifeReserve, wildlifeSanctuary, wetland, forest;
+
+  String get label => ['National Park', 'Wildlife Reserve', 'Wildlife Sanctuary', 'Wetland', 'Forest Reserve'][index];
+  
+  Color get color => [
+    const Color(0xFF2D6A4F),
+    const Color(0xFF1976D2),
+    const Color(0xFFE65100),
+    const Color(0xFF00ACC1),
+    const Color(0xFF388E3C),
+  ][index];
+  
+  IconData get icon => [Icons.park, Icons.nature, Icons.pets, Icons.water, Icons.forest][index];
+}
+
+class Park {
+  final String id;
+  final String name;
+  final String description;
+  final ParkType type;
+  final String region;
+  final double latitude;
+  final double longitude;
+  final double areaSqKm;
+  final List<String> wildlife;
+  final List<String> activities;
+  final String emoji;
+  final int yearEstablished;
+  final double adultFeeGhanaian;
+  final double adultFeeForeigner;
+
+  const Park({
+    required this.id,
+    required this.name,
+    required this.description,
+    required this.type,
+    required this.region,
+    required this.latitude,
+    required this.longitude,
+    required this.areaSqKm,
+    required this.wildlife,
+    required this.activities,
+    required this.emoji,
+    required this.yearEstablished,
+    required this.adultFeeGhanaian,
+    required this.adultFeeForeigner,
+  });
+}
+
+// Ghana's Protected Areas Data
+final List<Park> ghanaParks = [
+  Park(
+    id: 'mole',
+    name: 'Mole National Park',
+    description: 'Ghana\'s largest wildlife refuge, home to elephants, antelopes, and over 300 bird species.',
+    type: ParkType.nationalPark,
+    region: 'Savannah Region',
+    latitude: 9.2667,
+    longitude: -1.8500,
+    areaSqKm: 4840,
+    wildlife: ['Elephants', 'Kob Antelopes', 'Warthogs', 'Baboons', 'Buffalo', 'Hartebeest'],
+    activities: ['Game Drives', 'Walking Safaris', 'Bird Watching', 'Night Drives'],
+    emoji: '🐘',
+    yearEstablished: 1971,
+    adultFeeGhanaian: 20,
+    adultFeeForeigner: 40,
+  ),
+  Park(
+    id: 'kakum',
+    name: 'Kakum National Park',
+    description: 'Famous for its canopy walkway suspended 40m above the rainforest floor.',
+    type: ParkType.nationalPark,
+    region: 'Central Region',
+    latitude: 5.3500,
+    longitude: -1.3833,
+    areaSqKm: 375,
+    wildlife: ['Forest Elephants', 'Diana Monkeys', 'Giant Bongo', 'Forest Buffalo'],
+    activities: ['Canopy Walk', 'Hiking', 'Bird Watching', 'Night Walks'],
+    emoji: '🌳',
+    yearEstablished: 1931,
+    adultFeeGhanaian: 15,
+    adultFeeForeigner: 60,
+  ),
+  Park(
+    id: 'shai-hills',
+    name: 'Shai Hills Resource Reserve',
+    description: 'Close to Accra with baboons, antelopes, and historic caves.',
+    type: ParkType.wildlifeReserve,
+    region: 'Greater Accra Region',
+    latitude: 5.9333,
+    longitude: 0.0667,
+    areaSqKm: 49,
+    wildlife: ['Baboons', 'Kob Antelopes', 'Ostriches', 'Zebras'],
+    activities: ['Game Viewing', 'Cave Tours', 'Hiking', 'Rock Climbing'],
+    emoji: '🦓',
+    yearEstablished: 1962,
+    adultFeeGhanaian: 10,
+    adultFeeForeigner: 25,
+  ),
+  Park(
+    id: 'bui',
+    name: 'Bui National Park',
+    description: 'Home to one of Ghana\'s only hippopotamus populations along the Black Volta.',
+    type: ParkType.nationalPark,
+    region: 'Bono Region',
+    latitude: 8.2833,
+    longitude: -2.2500,
+    areaSqKm: 1821,
+    wildlife: ['Hippos', 'Crocodiles', 'Waterbuck', 'Kob', 'Baboons'],
+    activities: ['Boat Rides', 'Hippo Watching', 'Bird Watching', 'Fishing'],
+    emoji: '🦛',
+    yearEstablished: 1971,
+    adultFeeGhanaian: 15,
+    adultFeeForeigner: 35,
+  ),
+  Park(
+    id: 'ankasa',
+    name: 'Ankasa Conservation Area',
+    description: 'Ghana\'s wettest forest with exceptional biodiversity including forest elephants.',
+    type: ParkType.forest,
+    region: 'Western Region',
+    latitude: 5.2500,
+    longitude: -2.6333,
+    areaSqKm: 509,
+    wildlife: ['Forest Elephants', 'Chimpanzees', 'Bongo', 'Diana Monkey', 'Pygmy Hippo'],
+    activities: ['Forest Walks', 'Bird Watching', 'Primate Tracking', 'Night Walks'],
+    emoji: '🌿',
+    yearEstablished: 1976,
+    adultFeeGhanaian: 20,
+    adultFeeForeigner: 50,
+  ),
+  Park(
+    id: 'digya',
+    name: 'Digya National Park',
+    description: 'Located on the Volta Lake peninsula with diverse wildlife.',
+    type: ParkType.nationalPark,
+    region: 'Bono East Region',
+    latitude: 7.6167,
+    longitude: -0.3500,
+    areaSqKm: 3478,
+    wildlife: ['Manatees', 'Buffalo', 'Elephants', 'Waterbuck', 'Roan Antelope'],
+    activities: ['Boat Safari', 'Game Drives', 'Bird Watching', 'Fishing'],
+    emoji: '🏞️',
+    yearEstablished: 1971,
+    adultFeeGhanaian: 15,
+    adultFeeForeigner: 35,
+  ),
+  Park(
+    id: 'kyabobo',
+    name: 'Kyabobo National Park',
+    description: 'Ghana\'s newest park with dramatic mountain scenery.',
+    type: ParkType.nationalPark,
+    region: 'Oti Region',
+    latitude: 8.4000,
+    longitude: 0.5833,
+    areaSqKm: 360,
+    wildlife: ['Buffalo', 'Elephants', 'Colobus Monkeys', 'Various Antelopes'],
+    activities: ['Mountain Hiking', 'Wildlife Viewing', 'Waterfall Visits'],
+    emoji: '⛰️',
+    yearEstablished: 1993,
+    adultFeeGhanaian: 15,
+    adultFeeForeigner: 35,
+  ),
+  Park(
+    id: 'bia',
+    name: 'Bia National Park',
+    description: 'UNESCO Biosphere Reserve with pristine rainforest.',
+    type: ParkType.nationalPark,
+    region: 'Western North Region',
+    latitude: 6.5000,
+    longitude: -3.0833,
+    areaSqKm: 306,
+    wildlife: ['Forest Elephants', 'Bongo', 'Chimpanzees', 'Pygmy Hippo'],
+    activities: ['Forest Walks', 'Bird Watching', 'Research Tours'],
+    emoji: '🦧',
+    yearEstablished: 1974,
+    adultFeeGhanaian: 15,
+    adultFeeForeigner: 40,
+  ),
+  Park(
+    id: 'boabeng-fiema',
+    name: 'Boabeng-Fiema Monkey Sanctuary',
+    description: 'Community sanctuary where monkeys are protected as sacred animals.',
+    type: ParkType.wildlifeSanctuary,
+    region: 'Bono East Region',
+    latitude: 7.7167,
+    longitude: -1.7000,
+    areaSqKm: 4.4,
+    wildlife: ['Mona Monkeys', 'Black and White Colobus'],
+    activities: ['Monkey Viewing', 'Cultural Tours', 'Forest Walks'],
+    emoji: '🐒',
+    yearEstablished: 1974,
+    adultFeeGhanaian: 10,
+    adultFeeForeigner: 20,
+  ),
+  Park(
+    id: 'wechiau',
+    name: 'Wechiau Hippo Sanctuary',
+    description: 'Community-run sanctuary protecting hippos on the Black Volta.',
+    type: ParkType.wildlifeSanctuary,
+    region: 'Upper West Region',
+    latitude: 10.2500,
+    longitude: -2.7833,
+    areaSqKm: 40,
+    wildlife: ['Hippos', 'Crocodiles', 'Various Birds', 'Monitor Lizards'],
+    activities: ['Canoe Trips', 'Hippo Watching', 'Village Tours'],
+    emoji: '🦛',
+    yearEstablished: 1999,
+    adultFeeGhanaian: 15,
+    adultFeeForeigner: 30,
+  ),
+  Park(
+    id: 'songor',
+    name: 'Songor Lagoon Ramsar Site',
+    description: 'Important wetland for migratory birds, especially flamingos.',
+    type: ParkType.wetland,
+    region: 'Greater Accra Region',
+    latitude: 5.7833,
+    longitude: 0.4667,
+    areaSqKm: 115,
+    wildlife: ['Flamingos', 'Terns', 'Herons', 'Pelicans'],
+    activities: ['Bird Watching', 'Salt Mining Tours', 'Boat Trips'],
+    emoji: '🦩',
+    yearEstablished: 1992,
+    adultFeeGhanaian: 5,
+    adultFeeForeigner: 15,
+  ),
+  Park(
+    id: 'keta',
+    name: 'Keta Lagoon Complex',
+    description: 'Extensive coastal wetland system for waterbirds.',
+    type: ParkType.wetland,
+    region: 'Volta Region',
+    latitude: 5.9167,
+    longitude: 0.9833,
+    areaSqKm: 1200,
+    wildlife: ['Roseate Terns', 'Black Terns', 'Flamingos', 'Pelicans'],
+    activities: ['Bird Watching', 'Boat Tours', 'Cultural Tours'],
+    emoji: '🌊',
+    yearEstablished: 2000,
+    adultFeeGhanaian: 5,
+    adultFeeForeigner: 15,
+  ),
+];
